@@ -27,7 +27,6 @@ const GroupList = ({
             </ul>
         );
     } else {
-        console.log("selectedItem", selectedItem);
         return (
             <ul className="list-group">
                 {items.map((item) => (
