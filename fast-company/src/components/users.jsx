@@ -7,13 +7,15 @@ import GroupList from "./groupList";
 import SearchStatus from "./searchStatus";
 import UserTable from "./userTable";
 import _ from "lodash";
+import UserPage from "./userPage";
 
-const Users = () => {
+const Users = (props) => {
     const [users, setUsers] = useState();
     const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfession] = useState();
     const [selectedProf, setSelectedProf] = useState();
     const [sortBy, setSortBy] = useState({ iter: "name", order: "asc" });
+
     const pageSize = 8;
 
     useEffect(() => {
@@ -71,6 +73,14 @@ const Users = () => {
         const clearFilter = () => {
             setSelectedProf();
         };
+
+        const { match } = props;
+        const userId = match.params.userId;
+
+        if (userId) {
+            return <UserPage {...props} id={userId} />;
+        }
+
         return (
             <div className="d-flex">
                 {professions && (
@@ -109,11 +119,12 @@ const Users = () => {
             </div>
         );
     }
+
     return "loading...";
 };
 
 Users.propTypes = {
-    users: PropTypes.array.isRequired
+    match: PropTypes.object.isRequired
 };
 
 export default Users;
