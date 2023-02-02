@@ -7,7 +7,7 @@ import UsersListPage from "../components/page/usersListPage";
 const Users = () => {
     const params = useParams();
     const { userId, edit } = params;
-
+    //localStorage.clear();
     if (userId && edit) {
         return <EditUserPage userId={userId} />;
     }
