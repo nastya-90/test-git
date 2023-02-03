@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const TextAreaField = ({ label, type, name, value, onChange, error }) => {
+const TextAreaField = ({ label, name, value, onChange, error }) => {
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value });
     };
@@ -11,9 +11,9 @@ const TextAreaField = ({ label, type, name, value, onChange, error }) => {
 
     return (
         <div className="mb-4">
-            <label htmlFor={name}>{label}</label>
+            <label htmlFor={name}> {label}</label>
             <div className="input-group has-validation">
-                <input
+                <textarea
                     id={name}
                     name={name}
                     value={value}
@@ -21,7 +21,7 @@ const TextAreaField = ({ label, type, name, value, onChange, error }) => {
                     className={getInputClasses()}
                 />
 
-                {error && <div className="invalid-feedback">{error}</div>}
+                {error && <div className="invalid-feedback ">{error}</div>}
             </div>
         </div>
     );

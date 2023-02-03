@@ -167,15 +167,12 @@ const users = [
     }
 ];
 if (!localStorage.getItem("users")) {
-    console.log("localStorage");
     localStorage.setItem("users", JSON.stringify(users));
-    console.log("localStorage.users", localStorage.users);
 }
 
 const fetchAll = () =>
     new Promise((resolve) => {
         window.setTimeout(function () {
-            console.log("fetchall_Api");
             resolve(JSON.parse(localStorage.getItem("users")));
         }, 2000);
     });
